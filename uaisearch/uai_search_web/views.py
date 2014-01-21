@@ -10,4 +10,8 @@ def index(request):
 
 
 def search(request, search_input):
-    return HttpResponse("Welcome to uai-search you searched %s" %search_input)
+    if request.GET.get('q'):
+        message = 'You submitted: %r' % request.GET['q']
+    else:
+        message = 'You submitted nothing!'
+    return HttpResponse("Welcome to uai-search you searched %s" %message)
